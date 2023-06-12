@@ -1,0 +1,19 @@
+.Upload-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin: 15rem auto;
+  color: white;
+  background-color: rgb(3, 13, 10);
+  border-radius: 1rem;
+}
+.Upload-container h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin: 0;
+  padding: 1rem;
+}
+.Upload-upload-button {
+  width: 50%;
+  align-self: center;
+}
