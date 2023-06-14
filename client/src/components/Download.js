@@ -1,13 +1,20 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-function FileList() {
+function Download() {
   const [files, setFiles] = useState([]);
   const [display, setDisplay] = useState(false);
   const handleFiles = async () => {
     try {
       const response = await axios.get("http://localhost:3000/api/files");
       console.log(response.data);
+      // [{
+      // name: "file1.txt",
+      // path:"sugsvdcudosncsdi"
+      //  }, { name: "file2.txt", path: "sugsvdcudosncdi" }, { name: "file3.txt", path: "sugsvcudosncsdi" }]
+      //
+      // iterate through array of objects and get the path of each object.
+      // ["sugsvdcudosncsdi", "sugsvdcudosncsdi", "sugsvdcudosncsdi"]
       if (response.data) {
         setFiles(response.data);
         setDisplay(true);
@@ -27,7 +34,7 @@ function FileList() {
             return (
               <div>
                 <h3>{file.name}</h3>
-                <a href={`http://localhost:3000/api/files/${file._id}`}>
+                <a href={`http://localhost:3000/api/download/${file.id}`}>
                   Download
                 </a>
               </div>
@@ -43,4 +50,4 @@ function FileList() {
   );
 }
 
-export default FileList;
+export default Download;
