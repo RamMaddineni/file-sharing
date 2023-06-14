@@ -1,8 +1,24 @@
-go to client dir :
+go to client diretory :
 
 1. run : npm install
 2. run : npm start
 
-go to server dir :
+go to server directory :
 
-1. run :
+1. run : npm install
+2. run : nodemon server.js
+
+while downloading u can only access, the files that you uploaded.
+As i am giving the same mongo atlas database.
+While displaying them , u would get names of files i uploaded.
+and i am using multer to store files in local storage.
+and storing their paths in monogodb atlas database.
+So, u can not download the files , which i/other than u uploaded.
+
+now both react and node servers are running.
+
+this project using my atlas database.
+
+so , you no need to do anything with database.
+
+if you want to use your own database then you have to change the database url in .env file in server directory.
