@@ -43,7 +43,7 @@ function Download() {
       )}
       {display === false && (
         <div>
-          <h3>click to display files</h3>
+          <h3>Click to display files</h3>
         </div>
       )}
     </div>
