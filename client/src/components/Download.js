@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import "./Download.css";
 function Download() {
   const [files, setFiles] = useState([]);
   const [display, setDisplay] = useState(false);
@@ -8,42 +9,41 @@ function Download() {
     try {
       const response = await axios.get("http://localhost:3000/api/files");
       console.log(response.data);
-      // [{
-      // name: "file1.txt",
-      // path:"sugsvdcudosncsdi"
-      //  }, { name: "file2.txt", path: "sugsvdcudosncdi" }, { name: "file3.txt", path: "sugsvcudosncsdi" }]
-      //
-      // iterate through array of objects and get the path of each object.
-      // ["sugsvdcudosncsdi", "sugsvdcudosncsdi", "sugsvdcudosncsdi"]
-      if (response.data) {
-        setFiles(response.data);
-        setDisplay(true);
-      }
+      console.log(response.data.length);
+      setFiles(response.data);
+      setDisplay(true);
     } catch (err) {
       console.log(err.message);
       setDisplay(false);
     }
   };
   return (
-    <div>
-      <h1>File List</h1>
-      <button onClick={handleFiles}> Display Files</button>
-      {display ? (
-        <div>
-          {files.map((file) => {
-            return (
-              <div>
-                <h3>{file.name}</h3>
-                <a href={`http://localhost:3000/api/download/${file.id}`}>
-                  Download
-                </a>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
+    <div className="download-main-div">
+      <h1 className="download-h1">File List</h1>
+      <button className="download-button" onClick={handleFiles}>
+        Display Files
+      </button>
+
+      <div className="download-files">
+        {files.map((file, ind) => {
+          return (
+            <div className="download-file" key={ind}>
+              <h3>{file.name}</h3>
+              <a href={`http://localhost:3000/api/download/${file.id}`}>
+                Download
+              </a>
+            </div>
+          );
+        })}
+      </div>
+      {display === true && files.length === 0 && (
         <div>
           <h3>No files to display</h3>
+        </div>
+      )}
+      {display === false && (
+        <div>
+          <h3>click to display files</h3>
         </div>
       )}
     </div>

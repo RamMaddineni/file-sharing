@@ -1,4 +1,12 @@
-.upload-form {
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
+
+body {
+  height: 100vh;
+  background-color: #000;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.home-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,11 +19,13 @@
   padding: 2rem;
   border-radius: 5px;
 }
-.upload-h1 {
+
+.home-div h1 {
   font-size: 3rem;
   font-weight: 700;
 }
-.upload-button {
+
+.home-upload {
   margin-top: 2rem;
   padding: 1rem 2rem;
   background-color: #fff;
@@ -26,11 +36,8 @@
   cursor: pointer;
   text-decoration: none;
 }
-.upload-button:hover {
-  background-color: #000;
-  color: #fff;
-}
-.upload-submit {
+
+.home-download {
   margin-top: 2rem;
   padding: 1rem 2rem;
   background-color: #fff;
@@ -41,7 +48,9 @@
   cursor: pointer;
   text-decoration: none;
 }
-.upload-submit:hover {
+
+.home-upload:hover,
+.home-download:hover {
   background-color: #000;
   color: #fff;
 }

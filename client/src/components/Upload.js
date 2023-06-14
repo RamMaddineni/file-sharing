@@ -4,7 +4,6 @@ import { useState } from "react";
 import axios from "axios";
 function Upload() {
   const [file, setFile] = useState(null);
-
   const fileInput = useRef(null);
 
   const handleFileChange = (e) => {
@@ -12,6 +11,7 @@ function Upload() {
     console.log(e.target.files[0]);
     console.log(file);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (file) {
@@ -25,7 +25,6 @@ function Upload() {
         formData
       );
       console.log(response.data);
-      e.target.reset();
       setFile(null);
     } else {
       console.log("No file selected");
@@ -33,9 +32,15 @@ function Upload() {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <h1>File Sharing</h1>
+    <form
+      className="upload-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
+      <h1 className="upload-h1">File Sharing</h1>
       <button
+        className="upload-button"
         onClick={() => {
           fileInput.current.click();
         }}
@@ -48,7 +53,12 @@ function Upload() {
         ref={fileInput}
         style={{ display: "none" }}
       />
-      <button type="submit">Submit</button>
+      <p>{file && file.name}</p>
+      {file && (
+        <button className="upload-submit" onClick={handleSubmit}>
+          Submit
+        </button>
+      )}
     </form>
   );
 }
