@@ -46,6 +46,7 @@ function Upload() {
         type="file"
         onChange={(e) => handleFileChange(e)}
         ref={fileInput}
+        style={{ display: "none" }}
       />
       <button type="submit">Submit</button>
     </form>
